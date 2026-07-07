@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume ATS Checker</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <header>
+
+        <h1>🤖 AI Resume ATS Checker</h1>
+
+        <p>
+            Upload your resume and compare it with any Job Description to
+            calculate your ATS Score instantly.
+        </p>
+
+    </header>
+
+    <div class="glass-card">
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <div class="input-group">
+
+                <label>📄 Upload Resume</label>
+
+                <input
+                    type="file"
+                    name="resume"
+                    accept=".pdf,.doc,.docx"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>💼 Job Description</label>
+
+                <textarea
+                    name="job_description"
+                    placeholder="Paste the complete Job Description here..."
+                    required></textarea>
+
+            </div>
+
+            <button type="submit" class="btn">
+
+                Analyze Resume 🚀
+
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if result %}
+
+    <section class="results">
+
+        <div class="score-card">
+
+            <h2>ATS SCORE</h2>
+
+            <div class="circle">
+
+                <span>{{ result.score }}%</span>
+
+            </div>
+
+            <div class="progress">
+
+                <div class="progress-fill"
+                     data-score="{{ result.score }}">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>✅ Matched Skills</h3>
+
+                <div class="chips">
+
+                    {% for skill in result.matched %}
+
+                    <span class="chip success">
+
+                        {{ skill }}
+
+                    </span>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h3>❌ Missing Skills</h3>
+
+                <div class="chips">
+
+                    {% for skill in result.missing %}
+
+                    <span class="chip danger">
+
+                        {{ skill }}
+
+                    </span>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="suggestion-card">
+
+            <h3>💡 Suggestions</h3>
+
+            <ul>
+
+                {% for s in result.suggestions %}
+
+                <li>{{ s }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

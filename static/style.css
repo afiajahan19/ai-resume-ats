@@ -1,0 +1,748 @@
+/*==========================
+    GOOGLE FONT
+===========================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+    overflow-x:hidden;
+    background:#0f172a;
+    color:#fff;
+}
+
+/*==========================
+    BACKGROUND
+===========================*/
+
+.background{
+
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #0f172a,
+        #7c3aed,
+        #1d4ed8
+    );
+
+    background-size:400% 400%;
+
+    animation:gradientMove 12s ease infinite;
+
+    z-index:-2;
+}
+
+.background::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    top:-200px;
+    left:-150px;
+
+}
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:rgba(59,130,246,.15);
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    right:-120px;
+    bottom:-120px;
+
+}
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+/*==========================
+    CONTAINER
+===========================*/
+
+.container{
+
+    width:90%;
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:40px 0 80px;
+
+}
+
+/*==========================
+    HEADER
+===========================*/
+
+header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+header h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+header p{
+
+    color:#d1d5db;
+
+    max-width:700px;
+
+    margin:auto;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+}
+
+/*==========================
+    GLASS CARD
+===========================*/
+
+.glass-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.2);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+
+    transition:.35s;
+
+}
+
+.glass-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.input-group{
+
+    margin-bottom:25px;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-weight:600;
+
+}
+
+input[type=file]{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    border:none;
+
+    background:#1e293b;
+
+    color:white;
+
+}
+
+textarea{
+
+    width:100%;
+
+    height:220px;
+
+    resize:none;
+
+    border:none;
+
+    outline:none;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    background:#1e293b;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+textarea::placeholder{
+
+    color:#94a3b8;
+
+}
+
+/*==========================
+    BUTTON
+===========================*/
+
+.btn{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:linear-gradient(
+        90deg,
+        #3b82f6,
+        #2563eb
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 35px rgba(37,99,235,.5);
+
+}
+
+/*==========================
+    RESULTS
+===========================*/
+
+.results{
+
+    margin-top:45px;
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================
+    SCORE CARD
+===========================*/
+
+.score-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+.score-card h2{
+
+    margin-bottom:20px;
+
+    letter-spacing:2px;
+
+}
+
+.circle span{
+
+    color:white;
+
+    animation:zoomIn 1s ease;
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        transform:scale(.5);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/*==========================
+    PROGRESS BAR
+===========================*/
+
+.progress{
+
+    width:100%;
+
+    height:14px;
+
+    background:#1e293b;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    margin-top:30px;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    width:0%;
+
+    background:linear-gradient(
+        90deg,
+        #22c55e,
+        #3b82f6
+    );
+
+    border-radius:30px;
+
+    transition:width 1.5s ease;
+
+}
+
+/*==========================
+    RESULT CARDS
+===========================*/
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+
+    margin-bottom:25px;
+
+}
+
+.card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+.card h3{
+
+    margin-bottom:18px;
+
+}
+
+/*==========================
+    SKILL CHIPS
+===========================*/
+
+.chips{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.chip{
+
+    padding:10px 16px;
+
+    border-radius:50px;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.chip:hover{
+
+    transform:scale(1.08);
+
+}
+
+.success{
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+.danger{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+/*==========================
+    SUGGESTION CARD
+===========================*/
+
+.suggestion-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+.suggestion-card h3{
+
+    margin-bottom:20px;
+
+}
+
+.suggestion-card ul{
+
+    padding-left:22px;
+
+}
+
+.suggestion-card li{
+
+    margin-bottom:12px;
+
+    line-height:1.7;
+
+    color:#e2e8f0;
+
+}
+
+/*==========================
+    SCROLLBAR
+===========================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0f172a;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#3b82f6;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#2563eb;
+
+}
+
+/*==========================
+    RESPONSIVE
+===========================*/
+
+@media(max-width:900px){
+
+    header h1{
+
+        font-size:34px;
+
+    }
+
+    .glass-card{
+
+        padding:25px;
+
+    }
+
+    textarea{
+
+        height:180px;
+
+    }
+
+    .circle{
+
+        width:150px;
+
+        height:150px;
+
+        font-size:34px;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .container{
+
+        width:94%;
+
+    }
+
+    header h1{
+
+        font-size:28px;
+
+    }
+
+    header p{
+
+        font-size:15px;
+
+    }
+
+    .btn{
+
+        font-size:16px;
+
+        padding:15px;
+
+    }
+
+    .card{
+
+        padding:20px;
+
+    }
+
+    .score-card{
+
+        padding:25px;
+
+    }
+
+    .circle{
+
+        width:130px;
+
+        height:130px;
+
+        font-size:30px;
+
+    }
+
+}
+
+/*==========================
+    FLOATING ANIMATION
+===========================*/
+
+.glass-card,
+.score-card,
+.card,
+.suggestion-card{
+
+    animation:floatCard 6s ease-in-out infinite;
+
+}
+
+@keyframes floatCard{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================
+    FADE EFFECT
+===========================*/
+
+.card,
+.score-card,
+.suggestion-card{
+
+    opacity:0;
+
+    animation:fadeIn .8s forwards;
+
+}
+
+.card:nth-child(1){
+
+    animation-delay:.2s;
+
+}
+
+.card:nth-child(2){
+
+    animation-delay:.4s;
+
+}
+
+.suggestion-card{
+
+    animation-delay:.6s;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
