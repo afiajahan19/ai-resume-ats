@@ -27,15 +27,30 @@
   <nav id="topNav">
     <a href="#product">Product</a>
     <a href="#workflow">How it works</a>
+    {% if current_user.is_authenticated %}
     <a href="#dashboard">Dashboard</a>
     <a href="#history">History</a>
+    {% else %}
+    <a href="{{ url_for('login', next=url_for('dashboard')) }}">Dashboard</a>
+    <a href="{{ url_for('login', next=url_for('dashboard')) }}">History</a>
+    {% endif %}
     <a href="#faq">FAQs</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <div class="top-actions">
-    <a href="#signin">Sign in</a>
-    <a class="btn dark small" href="#screening-form">Start screening ↗</a>
+    {% if current_user.is_authenticated %}
+      <span>Hi, {{ current_user.name }}</span>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      <form method="POST" action="{{ url_for('logout') }}" class="nav-logout-form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button type="submit" class="nav-logout">Log out</button>
+      </form>
+      <a class="btn dark small" href="#screening-form">Start screening ↗</a>
+    {% else %}
+      <a href="{{ url_for('login') }}">Sign in</a>
+      <a class="btn dark small" href="{{ url_for('register') }}">Create account ↗</a>
+    {% endif %}
   </div>
 </header>
 
@@ -59,7 +74,11 @@
   </p>
 
   <div class="hero-actions">
+    {% if current_user.is_authenticated %}
     <a class="btn dark" href="#screening-form">Screen a resume →</a>
+    {% else %}
+    <a class="btn dark" href="{{ url_for('login', next=url_for('index') + '#screening-form') }}">Sign in to screen →</a>
+    {% endif %}
     <a class="btn light" href="#workflow">See how it works</a>
   </div>
 
@@ -296,6 +315,7 @@
 <!-- DASHBOARD -->
 
 <!-- LIVE DASHBOARD -->
+{% if current_user.is_authenticated %}
 <section class="section dashboard" id="dashboard">
 
   <div class="section-heading">
@@ -387,86 +407,12 @@
     </div>
   </div>
 </section>
+{% endif %}
 
-
-  <div class="section-heading">
-
-    <div>
-      <small class="kicker">YOUR WORKSPACE</small>
-
-      <h2>
-        A focused space for<br>
-        <span>resume evaluation.</span>
-      </h2>
-    </div>
-
-    <p>
-      The live screening form connects to your existing Flask application.
-      Dashboard statistics and management tools are illustrative until
-      the next backend phase.
-    </p>
-
-  </div>
-
-  <div class="dash-frame">
-
-    <aside class="dash-side">
-
-      <b>▣ EVALUATE PRO</b>
-      <small>WORKSPACE</small>
-
-      <a class="selected" href="#dashboard">▦ &nbsp; Overview</a>
-      <a href="#screening-form">＋ &nbsp; New screening</a>
-      <a href="#candidate-results">◎ &nbsp; Candidate results</a>
-      <a href="#history">◷ &nbsp; History</a>
-
-      <small class="side-note">
-        Bulk screening and team accounts are planned for a future release.
-      </small>
-
-    </aside>
-
-    <div class="dash-main">
-
-      <small>MONDAY / SCREENING WORKSPACE</small>
-
-      <h3>Good work starts with good information.</h3>
-
-      <div class="dash-stats">
-
-        <div>
-          <small>Total screenings</small>
-          <b>—</b>
-          <i>History backend planned</i>
-        </div>
-
-        <div>
-          <small>Shortlisted</small>
-          <b>—</b>
-          <i>Planned feature</i>
-        </div>
-
-        <div>
-          <small>Average match</small>
-          <b>—</b>
-          <i>Data aggregation planned</i>
-        </div>
-
-      </div>
-
-      <div class="empty-state">
-        <b>＋</b>
-        <strong>Your next screening starts here.</strong>
-        <p>Use the form below to evaluate one resume against a job description.</p>
-        <a href="#screening-form">Go to screening form ↓</a>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
 <!-- SCREENING HISTORY -->
+{% if current_user.is_authenticated %}
 <section class="section history-section" id="history">
 
   <div class="section-heading">
@@ -554,6 +500,7 @@
 
   </div>
 </section>
+{% endif %}
 
 
 <!-- SCREENING FORM -->
@@ -581,8 +528,9 @@
 
   </div>
 
+  {% if current_user.is_authenticated %}
   <div class="form-card">
-    
+
 {% if error_message %}
   <div class="form-error">{{ error_message }}</div>
 {% endif %}
@@ -601,6 +549,7 @@
     </div>
 
     <form method="POST" enctype="multipart/form-data" id="screeningForm">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
       <label>
         Upload resume
@@ -662,6 +611,17 @@
 
     </form>
   </div>
+  {% else %}
+  <div class="form-card">
+    <div class="empty-state">
+      <b>🔒</b>
+      <strong>Sign in to start screening</strong>
+      <p>Create an account or sign in to upload resumes, view ATS results and keep your personal screening history.</p>
+      <a class="btn dark" href="{{ url_for('login', next=url_for('index') + '#screening-form') }}">Sign in →</a>
+      <a href="{{ url_for('register') }}">Create an account</a>
+    </div>
+  </div>
+  {% endif %}
 </section>
 
 <!-- FLASK RESULTS -->
@@ -818,8 +778,7 @@
         <b>＋</b>
       </summary>
       <p>
-        A persistent screening history is planned. The current interface
-        does not yet provide a connected history dashboard.
+        Yes. When you are signed in, your completed evaluations are saved to your account and shown in your private screening history.
       </p>
     </details>
 
@@ -829,8 +788,7 @@
         <b>＋</b>
       </summary>
       <p>
-        Authentication, organisation accounts, job openings and team access
-        are planned for a future backend phase.
+        EVALUATE PRO supports individual accounts with email/password registration and Google Sign-In. Organisation and team accounts may be added in a future release.
       </p>
     </details>
 
@@ -948,16 +906,19 @@
 
   <small class="kicker">ACCOUNT ACCESS</small>
 
-  <h2>Team sign-in is <span>on the roadmap.</span></h2>
+  <h2>Your workspace. <span>Your account.</span></h2>
 
   <p>
-    Authentication and organisation accounts are not connected
-    to the current backend.
+    Sign in to access your private resume screening dashboard and saved evaluations.
   </p>
 
-  <a href="mailto:k.afiajahan@gmail.com?subject=EVALUATE%20PRO%20Account%20Access">
-    Ask about access ↗
-  </a>
+  {% if current_user.is_authenticated %}
+    <a href="{{ url_for('dashboard') }}">Open your dashboard ↗</a>
+  {% else %}
+    <a href="{{ url_for('login') }}">Sign in ↗</a>
+    &nbsp; · &nbsp;
+    <a href="{{ url_for('register') }}">Create an account</a>
+  {% endif %}
 
 </section>
 
