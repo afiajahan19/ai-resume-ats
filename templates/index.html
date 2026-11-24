@@ -1,163 +1,1016 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EVALUATE PRO — Hire with clarity</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <title>AI Resume ATS Checker</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<div class="background"></div>
+<header class="topbar">
+  <a class="brand" href="#home">
+    <span class="brand-mark">E</span>
+    EVALUATE<span class="blue">PRO</span>
+  </a>
 
-<div class="container">
+  <button class="menu-toggle" id="menuToggle"
+          aria-label="Open navigation" aria-expanded="false">☰</button>
 
-    <header>
+  <nav id="topNav">
+    <a href="#product">Product</a>
+    <a href="#workflow">How it works</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#history">History</a>
+    <a href="#faq">FAQs</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-        <h1>🤖 AI Resume ATS Checker</h1>
+  <div class="top-actions">
+    <a href="#signin">Sign in</a>
+    <a class="btn dark small" href="#screening-form">Start screening ↗</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+
+  <a class="announcement" href="#product">
+    <b>NEW</b> A clearer way to review resumes <span>→</span>
+  </a>
+
+  <h1>
+    Hire with clarity.<br>
+    Find the <em>right talent.</em>
+  </h1>
+
+  <p class="hero-copy">
+    A focused resume screening workspace for teams that want to compare
+    candidate skills with job requirements and make more informed hiring decisions.
+  </p>
+
+  <div class="hero-actions">
+    <a class="btn dark" href="#screening-form">Screen a resume →</a>
+    <a class="btn light" href="#workflow">See how it works</a>
+  </div>
+
+  <small class="hero-note">
+    One resume at a time today. A smarter recruitment workflow, built step by step.
+  </small>
+
+  <div class="hero-preview">
+    <div class="browser">
+
+      <div class="browser-bar">
+        <span>● ● ●</span>
+        <span>app.evaluatepro.com / screening</span>
+        <b>AJ</b>
+      </div>
+
+      <div class="mock-app">
+
+        <aside>
+          <strong>▣ EVALUATE PRO</strong>
+          <span class="active">▦ &nbsp; Overview</span>
+          <span>＋ &nbsp; New screening</span>
+          <span>◎ &nbsp; Candidates</span>
+          <span>◷ &nbsp; History</span>
+          <small>Recruitment workspace</small>
+        </aside>
+
+        <div class="mock-main">
+
+          <small>WORKSPACE / OVERVIEW</small>
+          <h3>Candidate screening</h3>
+
+          <div class="mock-stats">
+
+            <div>
+              <small>ATS MATCH SCORE</small>
+              <b>86%</b>
+              <i>Illustrative preview</i>
+            </div>
+
+            <div>
+              <small>MATCHED SKILLS</small>
+              <b>08</b>
+              <i>Example data</i>
+            </div>
+
+            <div>
+              <small>MISSING SKILLS</small>
+              <b>02</b>
+              <i>Example data</i>
+            </div>
+
+          </div>
+
+          <div class="mock-card">
+            <b>Resume match overview</b>
+
+            <div class="bar"><i></i></div>
+
+            <div class="chips">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>Flask</span>
+              <span>REST API</span>
+              <span class="miss">AWS</span>
+              <span class="miss">Docker</span>
+            </div>
+
+            <small>Sample interface · Not live data</small>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caption">
+    DESIGNED TO MAKE RESUME REVIEW MORE CLEAR AND CONSISTENT
+  </div>
+
+</section>
+
+<!-- PRODUCT SECTION -->
+<section class="intro section" id="product">
+
+  <small class="kicker">THE PRODUCT</small>
+
+  <h2>
+    Less guesswork in resume review.<br>
+    <span>More clarity in every comparison.</span>
+  </h2>
+
+  <p>
+    EVALUATE PRO compares the content of a resume with a job description
+    and presents the results in a format that is easier to review.
+  </p>
+
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="workflow" id="workflow">
+
+  <aside class="workflow-nav">
+    <small class="kicker">HOW IT WORKS</small>
+    <a href="#step1">01 &nbsp; Add the role</a>
+    <a href="#step2">02 &nbsp; Upload a resume</a>
+    <a href="#step3">03 &nbsp; Review insights</a>
+  </aside>
+
+  <div class="workflow-content">
+
+    <article class="story" id="step1">
+
+      <div>
+        <small class="kicker">01 / ROLE REQUIREMENTS</small>
+
+        <h3>
+          Start with the role.
+          <span>Make requirements clear.</span>
+        </h3>
 
         <p>
-            Upload your resume and compare it with any Job Description to
-            calculate your ATS Score instantly.
+          Paste the job description with the skills, qualifications and
+          experience expected for the position. It becomes the reference
+          for the resume comparison.
         </p>
+      </div>
 
-    </header>
+      <div class="visual">
+        <small>JOB DESCRIPTION</small>
+        <div class="fake-line wide"></div>
+        <div class="fake-line"></div>
+        <div class="fake-line short"></div>
 
-    <div class="glass-card">
+        <b>Required skills</b>
 
-        <form method="POST" enctype="multipart/form-data">
+        <div class="chips">
+          <span>Python</span>
+          <span>SQL</span>
+          <span>Communication</span>
+          <span>Problem solving</span>
+        </div>
+      </div>
 
-            <div class="input-group">
+    </article>
 
-                <label>📄 Upload Resume</label>
+    <article class="story" id="step2">
 
-                <input
-                    type="file"
-                    name="resume"
-                    accept=".pdf,.doc,.docx"
-                    required>
+      <div>
+        <small class="kicker">02 / RESUME UPLOAD</small>
 
+        <h3>
+          Bring in a resume.
+          <span>Keep the process simple.</span>
+        </h3>
+
+        <p>
+          Upload one PDF, DOC or DOCX file. The current application
+          extracts resume text and compares identified skills with
+          the job description.
+        </p>
+      </div>
+
+      <div class="visual gradient">
+        <div class="upload-preview">
+          <b>↑</b>
+          <strong>Resume uploaded</strong>
+          <small>candidate_resume.pdf</small>
+          <i>Ready for evaluation</i>
+        </div>
+      </div>
+
+    </article>
+
+    <article class="story" id="step3">
+
+      <div>
+        <small class="kicker">03 / SCREENING INSIGHTS</small>
+
+        <h3>
+          Review the match.
+          <span>See what stands out.</span>
+        </h3>
+
+        <p>
+          View the ATS percentage, matched skills, missing skills
+          and suggestions returned by the current evaluation process.
+        </p>
+      </div>
+
+      <div class="visual result-preview">
+        <b>Evaluation summary</b>
+        <strong>86%</strong>
+        <small>Illustrative score</small>
+        <div class="fake-line wide"></div>
+
+        <div class="chips">
+          <span>Python</span>
+          <span>SQL</span>
+          <span class="miss">AWS</span>
+        </div>
+      </div>
+
+    </article>
+
+  </div>
+</section>
+
+<!-- PRODUCT DETAILS -->
+<section class="stats">
+
+  <div>
+    <b>01</b>
+    <span>Resume per submission<br>in current version</span>
+  </div>
+
+  <div>
+    <b>PDF</b>
+    <span>Supported resume<br>format</span>
+  </div>
+
+  <div>
+    <b>DOCX</b>
+    <span>Supported resume<br>format</span>
+  </div>
+
+  <div>
+    <b>%</b>
+    <span>ATS match score<br>presentation</span>
+  </div>
+
+</section>
+
+<!-- DASHBOARD -->
+
+<!-- LIVE DASHBOARD -->
+<section class="section dashboard" id="dashboard">
+
+  <div class="section-heading">
+    <div>
+      <small class="kicker">YOUR WORKSPACE</small>
+      <h2>Screening <span>overview.</span></h2>
+    </div>
+    <p>Your dashboard is connected to your saved PostgreSQL screening records.</p>
+  </div>
+
+  <div class="dash-frame">
+
+    <aside class="dash-side">
+      <b>▣ EVALUATE PRO</b>
+      <small>WORKSPACE</small>
+
+      <a class="selected" href="#dashboard">▦ &nbsp; Overview</a>
+      <a href="#screening-form">＋ &nbsp; New screening</a>
+      <a href="#candidate-results">◎ &nbsp; Latest results</a>
+      <a href="#history">◷ &nbsp; History</a>
+
+      <small class="side-note">
+        Your saved resume evaluations
+      </small>
+    </aside>
+
+    <div class="dash-main">
+
+      <small>LIVE DATABASE / OVERVIEW</small>
+      <h3>Your screening activity</h3>
+
+      <div class="dash-stats">
+
+        <div>
+          <small>Total screenings</small>
+          <b>{{ total_screenings }}</b>
+          <i>Saved analyses</i>
+        </div>
+
+        <div>
+          <small>Strong matches</small>
+          <b>{{ strong_matches }}</b>
+          <i>ATS score of 70% or above</i>
+        </div>
+
+        <div>
+          <small>Average match</small>
+          <b>{{ average_score }}%</b>
+          <i>Across all saved analyses</i>
+        </div>
+
+      </div>
+
+      <div class="live-history-preview">
+        <div class="history-heading">
+          <div>
+            <h4>Recent screenings</h4>
+            <p>Your five latest saved evaluations</p>
+          </div>
+          <a href="#history">View all →</a>
+        </div>
+
+        {% if recent_analyses %}
+          {% for item in recent_analyses %}
+            <div class="recent-row">
+              <div class="recent-file">
+                <span class="file-icon">PDF</span>
+                <div>
+                  <strong>{{ item.resume_name }}</strong>
+                  <small>
+                    {{ item.uploaded_at.strftime('%d %b %Y, %I:%M %p') if item.uploaded_at else 'Date unavailable' }}
+                  </small>
+                </div>
+              </div>
+
+              <strong class="recent-score">{{ item.ats_score }}%</strong>
             </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty-state">
+            <b>＋</b>
+            <strong>No screenings yet</strong>
+            <p>Your completed resume analyses will appear here.</p>
+            <a href="#screening-form">Start your first screening ↓</a>
+          </div>
+        {% endif %}
+      </div>
 
-            <div class="input-group">
+    </div>
+  </div>
+</section>
 
-                <label>💼 Job Description</label>
 
-                <textarea
-                    name="job_description"
-                    placeholder="Paste the complete Job Description here..."
-                    required></textarea>
+  <div class="section-heading">
 
-            </div>
+    <div>
+      <small class="kicker">YOUR WORKSPACE</small>
 
-            <button type="submit" class="btn">
+      <h2>
+        A focused space for<br>
+        <span>resume evaluation.</span>
+      </h2>
+    </div>
 
-                Analyze Resume 🚀
+    <p>
+      The live screening form connects to your existing Flask application.
+      Dashboard statistics and management tools are illustrative until
+      the next backend phase.
+    </p>
 
-            </button>
+  </div>
 
-        </form>
+  <div class="dash-frame">
+
+    <aside class="dash-side">
+
+      <b>▣ EVALUATE PRO</b>
+      <small>WORKSPACE</small>
+
+      <a class="selected" href="#dashboard">▦ &nbsp; Overview</a>
+      <a href="#screening-form">＋ &nbsp; New screening</a>
+      <a href="#candidate-results">◎ &nbsp; Candidate results</a>
+      <a href="#history">◷ &nbsp; History</a>
+
+      <small class="side-note">
+        Bulk screening and team accounts are planned for a future release.
+      </small>
+
+    </aside>
+
+    <div class="dash-main">
+
+      <small>MONDAY / SCREENING WORKSPACE</small>
+
+      <h3>Good work starts with good information.</h3>
+
+      <div class="dash-stats">
+
+        <div>
+          <small>Total screenings</small>
+          <b>—</b>
+          <i>History backend planned</i>
+        </div>
+
+        <div>
+          <small>Shortlisted</small>
+          <b>—</b>
+          <i>Planned feature</i>
+        </div>
+
+        <div>
+          <small>Average match</small>
+          <b>—</b>
+          <i>Data aggregation planned</i>
+        </div>
+
+      </div>
+
+      <div class="empty-state">
+        <b>＋</b>
+        <strong>Your next screening starts here.</strong>
+        <p>Use the form below to evaluate one resume against a job description.</p>
+        <a href="#screening-form">Go to screening form ↓</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- SCREENING HISTORY -->
+<section class="section history-section" id="history">
+
+  <div class="section-heading">
+    <div>
+      <small class="kicker">YOUR RECORDS</small>
+      <h2>Screening <span>history.</span></h2>
+    </div>
+    <p>Review the resumes you have previously analyzed and their saved ATS scores.</p>
+  </div>
+
+  <div class="history-card">
+
+    <div class="history-toolbar">
+      <div>
+        <h3>All screenings</h3>
+        <p>{{ history_records|length }} saved evaluation(s)</p>
+      </div>
+
+      <input
+        type="search"
+        id="historySearch"
+        placeholder="Search resume filename..."
+        aria-label="Search screening history"
+      >
+    </div>
+
+    {% if history_records %}
+      <div class="history-table-wrap">
+        <table class="history-table" id="historyTable">
+          <thead>
+            <tr>
+              <th>Resume</th>
+              <th>ATS score</th>
+              <th>Matched skills</th>
+              <th>Missing skills</th>
+              <th>Date analyzed</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for item in history_records %}
+              <tr>
+                <td class="history-filename">
+                  {{ item.resume_name }}
+                </td>
+
+                <td>
+                  <span class="score-pill
+                    {% if item.ats_score >= 70 %}score-high
+                    {% elif item.ats_score >= 40 %}score-medium
+                    {% else %}score-low{% endif %}">
+                    {{ item.ats_score }}%
+                  </span>
+                </td>
+
+                <td title="{{ item.matched_skills or '' }}">
+                  {{ item.matched_skills|default('—', true)|truncate(65) }}
+                </td>
+
+                <td title="{{ item.missing_skills or '' }}">
+                  {{ item.missing_skills|default('—', true)|truncate(65) }}
+                </td>
+
+                <td>
+                  {{ item.uploaded_at.strftime('%d %b %Y, %I:%M %p') if item.uploaded_at else '—' }}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="history-no-results" id="noHistoryResults" hidden>
+        No matching resume found.
+      </p>
+
+    {% else %}
+      <div class="history-empty">
+        <span>◷</span>
+        <h3>Your history is empty</h3>
+        <p>Once you analyze a resume, its score and details will be saved here.</p>
+        <a class="btn dark" href="#screening-form">Analyze a resume →</a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+
+<!-- SCREENING FORM -->
+<section class="screening section" id="screening-form">
+
+  <div class="screening-intro">
+
+    <small class="kicker">START AN EVALUATION</small>
+
+    <h2>
+      One resume.<br>
+      <span>A clearer picture.</span>
+    </h2>
+
+    <p>
+      Upload a resume and paste the relevant job description.
+      Your existing screening backend will process the submission.
+    </p>
+
+    <div class="notice">
+      ⓘ &nbsp; Current version accepts one resume per submission and
+      uses keyword/skill matching. Bulk recruitment and semantic AI
+      analysis are not yet implemented.
+    </div>
+
+  </div>
+
+  <div class="form-card">
+    
+{% if error_message %}
+  <div class="form-error">{{ error_message }}</div>
+{% endif %}
+
+
+    <div class="form-heading">
+
+      <div>
+        <small class="kicker">NEW SCREENING</small>
+        <h3>Candidate evaluation</h3>
+        <p>Complete both fields to run an analysis.</p>
+      </div>
+
+      <small>01 / 01</small>
 
     </div>
 
-    {% if result %}
+    <form method="POST" enctype="multipart/form-data" id="screeningForm">
 
-    <section class="results">
+      <label>
+        Upload resume
+        <small>Required</small>
+      </label>
 
-        <div class="score-card">
+      <label class="drop-zone" id="dropZone" for="resume">
 
-            <h2>ATS SCORE</h2>
+        <b class="upload-icon">↑</b>
 
-            <div class="circle">
+        <strong id="fileName">
+          Drop your resume here or browse
+        </strong>
 
-                <span>{{ result.score }}%</span>
+        <span id="fileHint">
+          PDF, DOC or DOCX · One file per submission
+        </span>
 
-            </div>
+        <input
+          type="file"
+          id="resume"
+          name="resume"
+          accept=".pdf,.doc,.docx"
+          required
+        >
 
-            <div class="progress">
+      </label>
 
-                <div class="progress-fill"
-                     data-score="{{ result.score }}">
+      <div class="label-row">
+        <label for="job_description">
+          Job description
+          <small>Required</small>
+        </label>
 
-                </div>
+        <span id="charCount">0 characters</span>
+      </div>
 
-            </div>
+      <textarea
+        id="job_description"
+        name="job_description"
+        rows="7"
+        placeholder="Paste the job description here. Include responsibilities, required skills, qualifications and experience..."
+        required
+      ></textarea>
 
-        </div>
+      <small class="helper">
+        Tip: Include specific skills and role requirements for a more useful comparison.
+      </small>
 
-        <div class="cards">
+      <div class="form-bottom">
 
-            <div class="card">
+        <span>◇ &nbsp; Your submission is processed by this application.</span>
 
-                <h3>✅ Matched Skills</h3>
+        <button class="btn dark" id="submitButton" type="submit">
+          Analyze resume →
+        </button>
 
-                <div class="chips">
+      </div>
 
-                    {% for skill in result.matched %}
+    </form>
+  </div>
+</section>
 
-                    <span class="chip success">
+<!-- FLASK RESULTS -->
+{% if result %}
 
-                        {{ skill }}
+<section class="section results" id="candidate-results">
 
-                    </span>
+  <div class="section-heading">
 
-                    {% endfor %}
+    <div>
+      <small class="kicker">SCREENING COMPLETE</small>
+      <h2>Your evaluation <span>results.</span></h2>
+    </div>
 
-                </div>
+    <small class="ready">● RESULTS READY</small>
 
-            </div>
+  </div>
 
-            <div class="card">
+  <div class="result-stats">
 
-                <h3>❌ Missing Skills</h3>
+    <div class="score-card">
+      <small>ATS MATCH SCORE</small>
 
-                <div class="chips">
+      <b>{{ result.score }}<span>%</span></b>
 
-                    {% for skill in result.missing %}
+      <div class="result-bar">
+        <i class="progress-fill" data-score="{{ result.score }}"></i>
+      </div>
 
-                    <span class="chip danger">
+      <p>
+        Keyword and skill match based on the submitted job description.
+      </p>
+    </div>
 
-                        {{ skill }}
+    <div>
+      <small>MATCHED SKILLS</small>
+      <b>{{ result.matched|length }}</b>
+      <span>Identified in resume</span>
+    </div>
 
-                    </span>
+    <div>
+      <small>MISSING SKILLS</small>
+      <b>{{ result.missing|length }}</b>
+      <span>Not identified in resume</span>
+    </div>
 
-                    {% endfor %}
+  </div>
 
-                </div>
+  <div class="skill-results">
 
-            </div>
+    <article>
+      <h4>● Matched skills</h4>
 
-        </div>
+      <div class="chips">
+        {% for skill in result.matched %}
+          <span>{{ skill }}</span>
+        {% else %}
+          <small>No matched skills were identified.</small>
+        {% endfor %}
+      </div>
+    </article>
 
-        <div class="suggestion-card">
+    <article>
+      <h4 class="red">● Missing skills</h4>
 
-            <h3>💡 Suggestions</h3>
+      <div class="chips">
+        {% for skill in result.missing %}
+          <span class="miss">{{ skill }}</span>
+        {% else %}
+          <small>No missing skills were identified.</small>
+        {% endfor %}
+      </div>
+    </article>
 
-            <ul>
+  </div>
 
-                {% for s in result.suggestions %}
+  <article class="suggestions">
 
-                <li>{{ s }}</li>
+    <h4>✦ Suggestions</h4>
 
-                {% endfor %}
+    <ul>
+      {% for s in result.suggestions %}
+        <li>{{ s }}</li>
+      {% else %}
+        <li>No additional suggestions were returned.</li>
+      {% endfor %}
+    </ul>
 
-            </ul>
+  </article>
 
-        </div>
+</section>
 
-    </section>
+{% endif %}
 
-    {% endif %}
+<!-- FAQ -->
+<section class="faq section" id="faq">
 
-</div>
+  <div>
+
+    <small class="kicker">GOOD TO KNOW</small>
+
+    <h2>
+      Answers before<br>
+      <span>you get started.</span>
+    </h2>
+
+    <p>A few details about the current version of EVALUATE PRO.</p>
+
+    <a href="mailto:k.afiajahan@gmail.com">
+      Still have a question? Contact us ↗
+    </a>
+
+  </div>
+
+  <div class="faq-list">
+
+    <details>
+      <summary>
+        Can I upload multiple resumes at once?
+        <b>＋</b>
+      </summary>
+      <p>
+        Not yet. The current Flask application accepts one resume per submission.
+        Bulk resume screening is planned for a future backend update.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Which resume formats are supported?
+        <b>＋</b>
+      </summary>
+      <p>
+        The form accepts PDF, DOC and DOCX files.
+        Actual extraction depends on the existing backend implementation.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        How is the ATS score calculated?
+        <b>＋</b>
+      </summary>
+      <p>
+        The current implementation uses keyword and skill matching between
+        extracted resume text and the job description. It is not a semantic
+        AI assessment or a guarantee of candidate suitability.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Can I revisit past evaluations?
+        <b>＋</b>
+      </summary>
+      <p>
+        A persistent screening history is planned. The current interface
+        does not yet provide a connected history dashboard.
+      </p>
+    </details>
+
+    <details>
+      <summary>
+        Does it support organisation accounts?
+        <b>＋</b>
+      </summary>
+      <p>
+        Authentication, organisation accounts, job openings and team access
+        are planned for a future backend phase.
+      </p>
+    </details>
+
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap section">
+
+  <div class="section-heading">
+
+    <div>
+      <small class="kicker">WHAT'S NEXT</small>
+
+      <h2>
+        Built in stages.<br>
+        <span>Designed to grow.</span>
+      </h2>
+    </div>
+
+    <p>
+      The roadmap focuses on evolving the current evaluator into
+      a practical recruitment workspace.
+    </p>
+
+  </div>
+
+  <div class="roadmap-list">
+
+    <div>
+      <b class="current">CURRENT</b>
+      <strong>Single-resume evaluation</strong>
+      <span>Available</span>
+      <p>Upload one resume, compare skills and review suggestions.</p>
+    </div>
+
+    <div>
+      <b>PLANNED</b>
+      <strong>Bulk candidate screening</strong>
+      <span>Future phase</span>
+      <p>Upload multiple resumes and compare candidates for a role.</p>
+    </div>
+
+    <div>
+      <b>PLANNED</b>
+      <strong>Recruitment workspace</strong>
+      <span>Future phase</span>
+      <p>Job openings, candidate history, shortlist status and reports.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta">
+
+  <small class="kicker">MAKE THE NEXT REVIEW CLEARER</small>
+
+  <h2>
+    Good hiring starts<br>
+    with <span>better insight.</span>
+  </h2>
+
+  <p>
+    Try the current resume evaluation workflow and see the match details for yourself.
+  </p>
+
+  <a class="btn dark" href="#screening-form">Start screening →</a>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact section" id="contact">
+
+  <div>
+
+    <small class="kicker">GET IN TOUCH</small>
+
+    <h2>
+      Let's make hiring<br>
+      <span>more thoughtful.</span>
+    </h2>
+
+    <p>Questions, feedback or ideas for the next version? Reach out.</p>
+
+  </div>
+
+  <div class="contact-links">
+
+    <a href="mailto:k.afiajahan@gmail.com">
+      <small>EMAIL</small>
+      <b>k.afiajahan@gmail.com</b>
+      <i>↗</i>
+    </a>
+
+    <a href="https://www.linkedin.com/in/afiajahan-k/"
+       target="_blank" rel="noopener noreferrer">
+      <small>LINKEDIN</small>
+      <b>Connect professionally</b>
+      <i>↗</i>
+    </a>
+
+    <a href="https://github.com/afiajahan19"
+       target="_blank" rel="noopener noreferrer">
+      <small>GITHUB</small>
+      <b>Explore the project</b>
+      <i>↗</i>
+    </a>
+
+  </div>
+</section>
+
+<!-- SIGN IN -->
+<section class="signin section" id="signin">
+
+  <small class="kicker">ACCOUNT ACCESS</small>
+
+  <h2>Team sign-in is <span>on the roadmap.</span></h2>
+
+  <p>
+    Authentication and organisation accounts are not connected
+    to the current backend.
+  </p>
+
+  <a href="mailto:k.afiajahan@gmail.com?subject=EVALUATE%20PRO%20Account%20Access">
+    Ask about access ↗
+  </a>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+
+  <a class="brand" href="#home">
+    <span class="brand-mark">E</span>
+    EVALUATE<span class="blue">PRO</span>
+  </a>
+
+  <p>Resume insights for more informed hiring.</p>
+
+  <div>
+    <a href="#product">Product</a>
+    <a href="#faq">FAQs</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <small>
+    © <span id="year"></span> EVALUATE PRO. All rights reserved.
+  </small>
+
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("historySearch");
+    const historyTable = document.getElementById("historyTable");
+    const noResults = document.getElementById("noHistoryResults");
+
+    if (!searchInput || !historyTable) return;
+
+    searchInput.addEventListener("input", function () {
+        const searchValue = this.value.toLowerCase().trim();
+        const rows = historyTable.querySelectorAll("tbody tr");
+        let visibleCount = 0;
+
+        rows.forEach(function (row) {
+            const filename = row.cells[0].textContent.toLowerCase();
+            const matches = filename.includes(searchValue);
+
+            row.style.display = matches ? "" : "none";
+
+            if (matches) visibleCount++;
+        });
+
+        noResults.hidden = visibleCount !== 0;
+    });
+});
+</script>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 
