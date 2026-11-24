@@ -1,55 +1,256 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Progress Bar Animation
-    const progress = document.querySelector(".progress-fill");
+  const toggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("topNav");
 
-    if (progress) {
+  const input = document.getElementById("resume");
+  const zone = document.getElementById("dropZone");
 
-        const score = progress.dataset.score || 0;
+  const fileName = document.getElementById("fileName");
+  const fileHint = document.getElementById("fileHint");
 
-        progress.style.width = "0%";
+  const form = document.getElementById("screeningForm");
+  const submit = document.getElementById("submitButton");
 
-        setTimeout(() => {
+  const description = document.getElementById("job_description");
+  const count = document.getElementById("charCount");
 
-            progress.style.width = score + "%";
 
-        }, 300);
+  // MOBILE NAVIGATION
 
-    }
+  if (toggle && nav) {
 
-    // Cards Animation
-    const cards = document.querySelectorAll(".card, .score-card, .suggestion-card");
+    toggle.addEventListener("click", () => {
 
-    cards.forEach((card, index) => {
+      const open = nav.classList.toggle("open");
 
-        card.style.opacity = "0";
-        card.style.transform = "translateY(30px)";
+      toggle.setAttribute("aria-expanded", String(open));
 
-        setTimeout(() => {
+      toggle.setAttribute(
+        "aria-label",
+        open ? "Close navigation" : "Open navigation"
+      );
 
-            card.style.transition = "0.6s ease";
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-
-        }, index * 150);
+      toggle.textContent = open ? "×" : "☰";
 
     });
 
-    // Upload Animation
-    const fileInput = document.querySelector("input[type=file]");
+    nav.querySelectorAll("a").forEach(a => {
 
-    if (fileInput) {
+      a.addEventListener("click", () => {
 
-        fileInput.addEventListener("change", function () {
+        nav.classList.remove("open");
 
-            if (this.files.length) {
+        toggle.setAttribute("aria-expanded", "false");
 
-                this.style.border = "2px solid #22c55e";
+        toggle.textContent = "☰";
 
-            }
+      });
 
-        });
+    });
+
+  }
+
+
+  // RESUME FILE VALIDATION
+
+  const valid = [".pdf", ".doc", ".docx"];
+
+  function showFile(file) {
+
+    if (!file) return;
+
+    const ext = file.name
+      .slice(file.name.lastIndexOf("."))
+      .toLowerCase();
+
+    if (!valid.includes(ext)) {
+
+      input.value = "";
+
+      fileName.textContent = "Drop your resume here or browse";
+
+      fileHint.textContent =
+        "Please choose a PDF, DOC or DOCX file";
+
+      alert("Please upload a PDF, DOC or DOCX resume.");
+
+      return;
 
     }
+
+    fileName.textContent = file.name;
+
+    fileHint.textContent =
+      "File selected and ready for evaluation";
+
+  }
+
+
+  if (input) {
+
+    input.addEventListener("change", () => {
+
+      showFile(input.files[0]);
+
+    });
+
+  }
+
+
+  // DRAG AND DROP
+
+  if (zone) {
+
+    ["dragenter", "dragover"].forEach(type => {
+
+      zone.addEventListener(type, e => {
+
+        e.preventDefault();
+
+        zone.classList.add("dragover");
+
+      });
+
+    });
+
+
+    ["dragleave", "drop"].forEach(type => {
+
+      zone.addEventListener(type, e => {
+
+        e.preventDefault();
+
+        zone.classList.remove("dragover");
+
+      });
+
+    });
+
+
+    zone.addEventListener("drop", e => {
+
+      const files = e.dataTransfer && e.dataTransfer.files;
+
+      if (files && files.length) {
+
+        try {
+
+          input.files = files;
+
+          showFile(files[0]);
+
+        } catch (_) {
+
+          fileHint.textContent =
+            "Use browse to select your resume.";
+
+        }
+
+      }
+
+    });
+
+  }
+
+
+  // JOB DESCRIPTION CHARACTER COUNTER
+
+  if (description && count) {
+
+    const update = () => {
+
+      count.textContent =
+        `${description.value.length} characters`;
+
+    };
+
+    description.addEventListener("input", update);
+
+    update();
+
+  }
+
+
+  // FLASK FORM SUBMISSION
+
+  // Preserves the existing POST and multipart/form-data contract.
+
+  if (form && submit) {
+
+    form.addEventListener("submit", e => {
+
+      if (!form.reportValidity()) {
+
+        e.preventDefault();
+
+        return;
+
+      }
+
+      if (input && input.files.length === 0) {
+
+        e.preventDefault();
+
+        alert("Please choose a resume before submitting.");
+
+        return;
+
+      }
+
+      submit.disabled = true;
+
+      submit.textContent = "Analyzing…";
+
+    });
+
+  }
+
+
+  // ATS SCORE PROGRESS BAR
+
+  document.querySelectorAll(".progress-fill").forEach(bar => {
+
+    const score = Math.max(
+      0,
+      Math.min(100, Number(bar.dataset.score || 0))
+    );
+
+    requestAnimationFrame(() => {
+
+      bar.style.width = `${score}%`;
+
+    });
+
+  });
+
+
+  // SCROLL TO RESULTS AFTER FLASK RESPONSE
+
+  const result = document.getElementById("candidate-results");
+
+  if (result) {
+
+    setTimeout(() => {
+
+      result.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    }, 180);
+
+  }
+
+
+  // AUTOMATIC FOOTER YEAR
+
+  const year = document.getElementById("year");
+
+  if (year) {
+
+    year.textContent = new Date().getFullYear();
+
+  }
 
 });
